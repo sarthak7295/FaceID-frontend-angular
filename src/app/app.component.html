@@ -17,12 +17,12 @@
 		</div>
 		<button type="button" class="btn btn-primary" (click)="onClickRetake();" title="Retake" *ngIf="wasPictureTaken">🔁Retake</button>
 		<label for="email"><b>Email</b></label>
-		<input type="text" placeholder="Enter Email" name="email" required>
+		<input type="text" placeholder="Enter Email" name="email" [(ngModel)]="emailId" required>
 
 		<label for="psw"><b>Password</b></label>
-		<input type="password" placeholder="Enter Password" name="psw" required>
+		<input type="password" placeholder="Enter Password" [(ngModel)]="secretPassword" name="psw" required>
 
-		<button type="button" class="btn btn-primary" (click)="onClickSubmit()">Submit</button>
+		<button type="sumbit" class="btn btn-primary" (click)="onClickSubmit()">Submit</button>
 		<button type="button" class="btn btn-primary" (click)="closeForm()">Close</button>
 	</form>
 </div>

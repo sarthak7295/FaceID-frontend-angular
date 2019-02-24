@@ -1,3 +1,4 @@
+import { LoginRequest } from './login-request';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {WebcamModule} from 'ngx-webcam';
 import {Subject} from 'rxjs/Subject';
@@ -14,6 +15,10 @@ export class AppComponent {
 
   public isRegisterSelected: boolean = false;
   public wasPictureTaken: boolean = false;
+
+  public emailId: string = '';
+
+  public secretPassword: string = '';
 
   // latest snapshot
   public webcamImage: WebcamImage = null;
@@ -56,11 +61,13 @@ export class AppComponent {
   }
 
   onClickSubmit(){
-    if(this.wasPictureTaken){
-      console.log('Register method called');
-      this.wasPictureTaken = false;
+    if(this.wasPictureTaken && this.emailId && this.emailId.length > 0 
+      && this.secretPassword && this.secretPassword.length > 0){
+      let loginRequest = new LoginRequest(this.emailId,this.secretPassword,this.webcamImagesList);
+      console.log(loginRequest);
+      // this.wasPictureTaken = false;
     }else{
-      alert('Take picture first');
+      alert('Fill all details first');
     }
   }
 
